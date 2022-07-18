@@ -1,4 +1,4 @@
-from src.utils.all_utils import read_yaml, create_dir
+from src.utils.all_utils import read_yaml, create_dir, save_local_df
 import argparse
 import pandas as pd
 import os
@@ -18,7 +18,7 @@ def get_data(config_path):
     
     raw_local_file_path= os.path.join(raw_local_dir_path,raw_local_file)
 
-    df.to_csv(raw_local_file_path, sep=",",index=False)
+    save_local_df(df,raw_local_file_path, sep=",",index=False)
 
 
 
