@@ -13,8 +13,7 @@ def get_data(config_path):
     raw_loacl_dir=config['artifacts']['raw_loacl_dir']
     raw_local_file=config['artifacts']['raw_local_file']
 
-    raw_local_dir_path= os.path.join(artifacts_dir,raw_loacl_dir)
-    
+    raw_local_dir_path= os.path.join(artifacts_dir,raw_loacl_dir)    
     create_dir([raw_local_dir_path])
     
     raw_local_file_path= os.path.join(raw_local_dir_path,raw_local_file)
