@@ -1,9 +1,11 @@
+import logging
 import re
-from src.utils.all_utils import read_yaml, create_dir, save_local_df
+from src.utils.all_utils import read_yaml, create_dir, save_local_df,create_log_dir
 import argparse
 import pandas as pd
 import os
 from sklearn.model_selection import train_test_split
+import logging
 
 
 def split_and_save_data(config_path, params_path):
@@ -44,10 +46,18 @@ def split_and_save_data(config_path, params_path):
 if __name__=="__main__":
     args = argparse.ArgumentParser()
 
+    create_log_dir()
+
     args.add_argument("--config","-c",default = "config/config.yaml")
     args.add_argument("--params","-p",default = "params.yaml")
 
     parsed_args = args.parse_args()
 
-    split_and_save_data(config_path = parsed_args.config, params_path = parsed_args.params)
+    try:
+        logging.info(" >>>>> Stage 02 started")
+        split_and_save_data(config_path = parsed_args.config, params_path = parsed_args.params)
+        logging.info(" >>>>> Stage 02 completed")
+    except Exception as e:
+        logging.exception(e)
+        raise e
 

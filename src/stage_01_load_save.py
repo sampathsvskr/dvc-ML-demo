@@ -1,7 +1,9 @@
-from src.utils.all_utils import read_yaml, create_dir, save_local_df
+from src.utils.all_utils import read_yaml, create_dir, save_local_df,create_log_dir
 import argparse
 import pandas as pd
 import os
+import logging
+
 
 
 def get_data(config_path):
@@ -27,11 +29,19 @@ def get_data(config_path):
 
 
 if __name__=="__main__":
-    args = argparse.ArgumentParser()
 
+    create_log_dir()
+
+    args = argparse.ArgumentParser()
     args.add_argument("--config","-c",default = "config/config.yaml")
 
     parsed_args = args.parse_args()
 
-    get_data(config_path = parsed_args.config)
+    try:
+        logging.info(" >>>>> Stage 01 started")
+        get_data(config_path = parsed_args.config)
+        logging.info(" >>>>> Stage 01 completed")
+    except Exception as e:
+        logging.exception(e)
+        raise e
 

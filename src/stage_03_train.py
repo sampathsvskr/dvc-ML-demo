@@ -1,9 +1,10 @@
-from src.utils.all_utils import read_yaml, create_dir, save_local_df
+from src.utils.all_utils import read_yaml, create_dir, save_local_df, create_log_dir
 import argparse
 import pandas as pd
 import os
 from sklearn.linear_model import ElasticNet
 import joblib
+import logging
 
 
 def train_data(config_path, params_path):
@@ -44,6 +45,9 @@ def train_data(config_path, params_path):
 
 
 if __name__=="__main__":
+
+    create_log_dir()
+
     args = argparse.ArgumentParser()
 
     args.add_argument("--config","-c",default = "config/config.yaml")
@@ -51,5 +55,11 @@ if __name__=="__main__":
 
     parsed_args = args.parse_args()
 
-    train_data(config_path = parsed_args.config, params_path = parsed_args.params)
+    try:
+        logging.info(" >>>>> Stage 03 started")
+        train_data(config_path = parsed_args.config, params_path = parsed_args.params)
+        logging.info(" >>>>> Stage 03 completed")
+    except Exception as e:
+        logging.exception(e)
+        raise e
 

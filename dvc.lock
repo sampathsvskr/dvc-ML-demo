@@ -26,11 +26,11 @@ stages:
       md5: 95f146e1d8a6a5af24adeaf9a8840f9e
       size: 381
     - path: src/stage_02_split_data.py
-      md5: e43f9b0c12d56928d9b600664654484b
-      size: 1729
+      md5: fdb63ea2bfc0f58314c1b720e5ed5bbe
+      size: 1989
     - path: src/utils/all_utils.py
-      md5: 617392bc8a08d563060cb7471f89f803
-      size: 670
+      md5: 299812714e2b43db974fd5abfdee4325
+      size: 996
     params:
       params.yaml:
         base.random_state: 43
@@ -49,11 +49,11 @@ stages:
       md5: 95f146e1d8a6a5af24adeaf9a8840f9e
       size: 381
     - path: src/stage_01_load_save.py
-      md5: 2b2cf63ea441e895ea22c4b8e343fd98
-      size: 1037
+      md5: 9683cbf2d29039748d2a6b3f60a01f09
+      size: 1283
     - path: src/utils/all_utils.py
-      md5: 617392bc8a08d563060cb7471f89f803
-      size: 670
+      md5: 299812714e2b43db974fd5abfdee4325
+      size: 996
     outs:
     - path: artifacts/raw_local_dir/data.csv
       md5: 7d814a1bda02145efe703f4e1c01847a
@@ -68,11 +68,11 @@ stages:
       md5: 95f146e1d8a6a5af24adeaf9a8840f9e
       size: 381
     - path: src/stage_03_train.py
-      md5: c66674e6042906fbad2c30881498f224
-      size: 1714
+      md5: 24a0ce09e694e5eaa0e991356670a402
+      size: 1961
     - path: src/utils/all_utils.py
-      md5: 617392bc8a08d563060cb7471f89f803
-      size: 670
+      md5: 299812714e2b43db974fd5abfdee4325
+      size: 996
     params:
       params.yaml:
         base.random_state: 43
@@ -95,11 +95,11 @@ stages:
       md5: 95f146e1d8a6a5af24adeaf9a8840f9e
       size: 381
     - path: src/stage_04_evaluate.py
-      md5: 97b4610b77fe422dd75594af05c80640
-      size: 2149
+      md5: 7d6d8cd1d31b1c580f8b8b7875082263
+      size: 2395
     - path: src/utils/all_utils.py
-      md5: 617392bc8a08d563060cb7471f89f803
-      size: 670
+      md5: 299812714e2b43db974fd5abfdee4325
+      size: 996
     outs:
     - path: artifacts/reports/scores.json
       md5: 498bacc0911cf96ceb2a0ae169328dcf

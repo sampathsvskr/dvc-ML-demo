@@ -1,11 +1,12 @@
 from venv import create
-from src.utils.all_utils import read_yaml, create_dir, save_local_df, save_reports
+from src.utils.all_utils import read_yaml, create_dir, save_local_df, save_reports,create_log_dir
 import argparse
 import pandas as pd
 import os
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import joblib
 import numpy as np
+import logging
 
 
 def evaluate_metrics(actual_values, predicted_values):
@@ -70,11 +71,20 @@ def evaluate(config_path):
 
 
 if __name__=="__main__":
+
+    create_log_dir()
+
     args = argparse.ArgumentParser()
 
     args.add_argument("--config","-c",default = "config/config.yaml")   
 
     parsed_args = args.parse_args()
 
-    evaluate(config_path = parsed_args.config)
+    try:
+        logging.info(" >>>>> Stage 04 started")
+        evaluate(config_path = parsed_args.config)
+        logging.info(" >>>>> Stage 04 completed")
+    except Exception as e:
+        logging.exception(e)
+        raise e
 
