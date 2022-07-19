@@ -1,5 +1,7 @@
 stages:
   - cml_run
+
+on: [push]
  
 cml:
   stage: cml_run
