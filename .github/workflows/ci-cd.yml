@@ -1,19 +1,27 @@
 name: train-model
 
+## whrn to trigger
 on: [push]
 
 jobs: 
   run: 
+
+    # use ubuntu as base 
     runs-on: [ubuntu-latest]
     steps: 
+
+      # fixed steps
       - uses: actions/checkout@v2
       - uses: iterative/setup-cml@v1
       - uses: actions/setup-python@v2
         with: 
+         # [ython version we need]
           python-version: "3.7"
-      - name: cml_run ~
+      - name: cml_run
+        ## git token to run
         env:
           repo_token: "${{ secrets.GITHUB_TOKEN}}"
+        # setting up environment
         run: |
             pip install --upgrade pip
             pip install -r requirements.txt
